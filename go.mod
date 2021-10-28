@@ -6,7 +6,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/praslar/lib v0.2.2
 	gitlab.com/goxp/cloud0 v1.5.0
-	gorm.io/gorm v1.22.1
+	gorm.io/gorm v1.21.12
 )
 
 require (
