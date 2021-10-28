@@ -7,9 +7,9 @@ import (
 
 type SettingMetaDetail struct {
 	BaseModel
-	SettingMetaId uuid.UUID `json:"setting_meta_id"`
-	Key string `json:"key"`
-	Value string `json:"value"`
+	SettingMetaId uuid.UUID `json:"setting_meta_id" gorm:"column:setting_meta_id"`
+	Key string `json:"key" gorm:"column:key;type:varchar(255)"`
+	Value string `json:"value" gorm:"column:value"`
 }
 
 func (SettingMetaDetail) TableName() string {
