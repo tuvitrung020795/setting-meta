@@ -1,4 +1,4 @@
-module setting-meta
+module github.com/tuvitrung020795/setting-meta
 
 go 1.17
 

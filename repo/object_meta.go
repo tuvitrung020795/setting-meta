@@ -6,8 +6,8 @@ import (
 	"github.com/google/uuid"
 	"gitlab.com/goxp/cloud0/logger"
 	"gorm.io/gorm"
-	"setting-meta/model"
-	"setting-meta/utils"
+	"github.com/tuvitrung020795/setting-meta/model"
+	"github.com/tuvitrung020795/setting-meta/utils"
 )
 
 type ObjectMeta struct {

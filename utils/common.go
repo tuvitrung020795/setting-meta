@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"setting-meta/model"
+	"github.com/tuvitrung020795/setting-meta/model"
 )
 
 func ParseIDFromUri(c *gin.Context) *uuid.UUID {

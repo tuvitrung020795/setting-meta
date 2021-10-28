@@ -5,9 +5,9 @@ import (
 	"github.com/praslar/lib/common"
 	"gitlab.com/goxp/cloud0/ginext"
 	"gitlab.com/goxp/cloud0/logger"
-	"setting-meta/model"
-	"setting-meta/repo"
-	"setting-meta/utils"
+	"github.com/tuvitrung020795/setting-meta/model"
+	"github.com/tuvitrung020795/setting-meta/repo"
+	"github.com/tuvitrung020795/setting-meta/utils"
 	"net/http"
 )
 
