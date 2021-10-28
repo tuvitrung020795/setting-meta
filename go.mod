@@ -5,11 +5,9 @@ go 1.17
 require (
 	github.com/google/uuid v1.3.0
 	github.com/praslar/lib v0.2.2
-	gitlab.com/goxp/cloud0 v1.5.0
 	gorm.io/gorm v1.21.12
-)
-
-require (
+	github.com/sendgrid/rest v2.6.4+incompatible // indirect
+    gitlab.com/goxp/cloud0 v1.4.3
 	github.com/astaxie/beego v1.12.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.7.2 // indirect
@@ -25,7 +23,6 @@ require (
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
-	github.com/sendgrid/rest v2.6.5+incompatible // indirect
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
