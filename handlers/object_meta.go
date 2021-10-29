@@ -3,12 +3,12 @@ package handlers
 import (
 	"github.com/google/uuid"
 	"github.com/praslar/lib/common"
-	"gitlab.com/goxp/cloud0/ginext"
-	"gitlab.com/goxp/cloud0/logger"
-	"net/http"
 	"github.com/tuvitrung020795/setting-meta/model"
 	"github.com/tuvitrung020795/setting-meta/repo"
 	"github.com/tuvitrung020795/setting-meta/utils"
+	"gitlab.com/goxp/cloud0/ginext"
+	"gitlab.com/goxp/cloud0/logger"
+	"net/http"
 )
 
 type ObjectMetaHandlers struct {
@@ -32,11 +32,13 @@ func (h *ObjectMetaHandlers) Create(r *ginext.Request) (*ginext.Response, error)
 		return nil, ginext.NewError(http.StatusBadRequest, err.Error())
 	}
 
-	ob := &model.ObjectMeta{
-		BaseModel: model.BaseModel{
-			CreatorID: &owner,
-		},
+	ob,err := h.obRepo.GetValue(r.Context(),*req.SettingMetaId,*req.ObjectId)
+	if err != nil {
+		ob.CreatorID = &owner
+	}else {
+		ob.UpdaterID = &owner
 	}
+
 	common.Sync(req, ob)
 
 	if err = h.obRepo.Create(r.Context(), ob); err != nil {

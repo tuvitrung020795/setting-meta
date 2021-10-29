@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/google/uuid"
-	"gitlab.com/goxp/cloud0/logger"
-	"gorm.io/gorm"
 	"github.com/tuvitrung020795/setting-meta/model"
 	"github.com/tuvitrung020795/setting-meta/utils"
+	"gitlab.com/goxp/cloud0/logger"
+	"gorm.io/gorm"
 )
 
 type ObjectMeta struct {
@@ -32,7 +32,7 @@ func (r *ObjectMeta) Create(ctx context.Context, ob *model.ObjectMeta) error {
 		return fmt.Errorf("Invalid Setting meta")
 	}
 
-	return tx.Create(ob).Error
+	return tx.Save(ob).Error
 }
 
 func (r *ObjectMeta) Get(ctx context.Context, id uuid.UUID) (*model.ObjectMeta, error) {
@@ -98,4 +98,17 @@ func (r *ObjectMeta) GetOneFlexible(ctx context.Context, field string, value int
 
 	err := tx.Where(field+" = ? ", value).First(&o).Error
 	return o, err
+}
+
+func (r *ObjectMeta) GetValue(ctx context.Context,settingMetaId uuid.UUID,objectId uuid.UUID) (*model.ObjectMeta, error)  {
+	tx, cancel := r.DBWithTimeout(ctx)
+	defer cancel()
+
+	o := &model.ObjectMeta{}
+
+	if err := tx.Model(&model.ObjectMeta{}).Where("setting_meta_id = ? AND object_id = ?", settingMetaId,objectId).First(&o).Error; err != nil {
+		return nil,err
+	}
+
+	return o,nil
 }

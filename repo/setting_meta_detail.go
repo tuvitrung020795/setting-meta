@@ -108,14 +108,14 @@ func (r *SettingMetaDetail) GetOneFlexible(ctx context.Context, field string, va
 	return o, err
 }
 
-func (r *SettingMetaDetail) CheckExistKey(tx *gorm.DB, id uuid.UUID,settingMetaDetailId uuid.UUID,key string) bool {
+func (r *SettingMetaDetail) CheckExistKey(tx *gorm.DB, id uuid.UUID, settingMetaId uuid.UUID,key string) bool {
 	var count int64 = 0
 
 	if id != uuid.Nil {
 		tx = tx.Where("id != ? ",id)
 	}
 
-	tx = tx.Where("setting_meta_id = ? AND key = ?", settingMetaDetailId,key)
+	tx = tx.Where("setting_meta_id = ? AND key = ?", settingMetaId,key)
 	err := tx.Model(&model.SettingMetaDetail{}).Count(&count).Error
 	if err != nil {
 		return true

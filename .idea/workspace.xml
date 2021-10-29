@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e15e15-4004-41ee-8c62-1cce18d6be51" name="Changes" comment="" />
+    <list default="true" id="32e15e15-4004-41ee-8c62-1cce18d6be51" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/handlers/object_meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/object_meta.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repo/object_meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/repo/object_meta.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repo/setting_meta_detail.go" beforeDir="false" afterPath="$PROJECT_DIR$/repo/setting_meta_detail.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
