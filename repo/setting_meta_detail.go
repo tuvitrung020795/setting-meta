@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/google/uuid"
-	"gitlab.com/goxp/cloud0/logger"
-	"gorm.io/gorm"
 	"github.com/tuvitrung020795/setting-meta/model"
 	"github.com/tuvitrung020795/setting-meta/utils"
+	"gitlab.com/goxp/cloud0/logger"
+	"gorm.io/gorm"
 )
 
 type SettingMetaDetail struct {
@@ -115,7 +115,8 @@ func (r *SettingMetaDetail) CheckExistKey(tx *gorm.DB, id uuid.UUID,settingMetaD
 		tx = tx.Where("id != ? ",id)
 	}
 
-	err := tx.Model(&model.SettingMetaDetail{}).Where("setting_meta_id = ? AND key = ?", settingMetaDetailId,key).Count(&count).Error
+	tx = tx.Where("setting_meta_id = ? AND key = ?", settingMetaDetailId,key)
+	err := tx.Model(&model.SettingMetaDetail{}).Count(&count).Error
 	if err != nil {
 		return true
 	}

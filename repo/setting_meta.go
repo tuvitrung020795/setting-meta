@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/google/uuid"
-	"gitlab.com/goxp/cloud0/logger"
-	"gorm.io/gorm"
 	"github.com/tuvitrung020795/setting-meta/model"
 	"github.com/tuvitrung020795/setting-meta/utils"
+	"gitlab.com/goxp/cloud0/logger"
+	"gorm.io/gorm"
 )
 
 type SettingMeta struct {
@@ -21,6 +21,19 @@ func (r *SettingMeta) DBWithTimeout(ctx context.Context) (*gorm.DB, context.Canc
 }
 
 func NewSettingMetaRepo(db *gorm.DB) *SettingMeta {
+	_ = db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
+
+	models := []interface{}{
+		&model.SettingMeta{},
+		&model.SettingMetaDetail{},
+		&model.ObjectMeta{},
+	}
+	for _, m := range models {
+		err := db.AutoMigrate(m)
+		if err != nil {
+			return nil
+		}
+	}
 	return &SettingMeta{db: db}
 }
 
