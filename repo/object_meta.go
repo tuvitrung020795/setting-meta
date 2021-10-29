@@ -106,9 +106,7 @@ func (r *ObjectMeta) GetValue(ctx context.Context,settingMetaId uuid.UUID,object
 
 	o := &model.ObjectMeta{}
 
-	if err := tx.Model(&model.ObjectMeta{}).Where("setting_meta_id = ? AND object_id = ?", settingMetaId,objectId).First(&o).Error; err != nil {
-		return nil,err
-	}
+	err := tx.Model(&model.ObjectMeta{}).Where("setting_meta_id = ? AND object_id = ?", settingMetaId,objectId).First(&o).Error
 
-	return o,nil
+	return o,err
 }
